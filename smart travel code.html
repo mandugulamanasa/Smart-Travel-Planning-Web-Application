@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Travel Planner</title>
+
+<style>
+body{
+font-family: Arial;
+background: linear-gradient(to right,#4facfe,#00f2fe);
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+width:400px;
+margin:auto;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px gray;
+}
+
+input,select{
+width:90%;
+padding:8px;
+margin:8px;
+}
+
+button{
+padding:10px 15px;
+background:#28a745;
+color:white;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+button:hover{
+background:#218838;
+}
+
+#result{
+margin-top:20px;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Smart Travel Planner</h2>
+
+<select id="destination">
+<option value="">Select Destination</option>
+<option value="Goa">Goa</option>
+<option value="Delhi">Delhi</option>
+<option value="Hyderabad">Hyderabad</option>
+<option value="Kerala">Kerala</option>
+<option value="Jaipur">Jaipur</option>
+</select>
+
+<input type="number" id="days" placeholder="Number of Days">
+
+<input type="number" id="budget" placeholder="Enter Budget">
+
+<button onclick="planTrip()">Plan My Trip</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function planTrip(){
+
+let destination=document.getElementById("destination").value;
+let days=document.getElementById("days").value;
+let budget=document.getElementById("budget").value;
+
+if(destination==""  days==""  budget=="")
+{
+alert("Please fill all details");
+return;
+}
+
+let suggestion="";
+
+if(budget<5000)
+{
+suggestion="Budget Trip: Use local transport and budget hotels.";
+}
+else if(budget<15000)
+{
+suggestion="Medium Trip: Stay in good hotels and visit famous places.";
+}
+else
+{
+suggestion="Luxury Trip: Enjoy resorts, guided tours and premium travel.";
+}
+
+document.getElementById("result").innerHTML=
+"Destination: "+destination+"<br>"+
+"Days: "+days+"<br>"+
+"Budget: ₹"+budget+"<br><br>"+
+suggestion;
+
+}
+
+</script>
+
+</body>
+</html>
